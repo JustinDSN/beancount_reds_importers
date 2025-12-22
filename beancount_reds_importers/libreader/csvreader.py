@@ -5,6 +5,7 @@ import datetime
 import re
 import sys
 import traceback
+from decimal import ROUND_HALF_UP, Decimal
 
 import petl as etl
 from beancount.core.number import D
@@ -123,10 +124,17 @@ class Importer(reader.Reader, BGImporter):
             "amount",
             "balance",
         ]
+
+        # Get currency precision from config, default to 2 decimal places
+        # Can be overridden per-importer with self.currency_precision = N
+        precision = getattr(self, "currency_precision", 2)
+        quantizer = Decimal("0." + "0" * precision) if precision > 0 else Decimal("1")
+
         for i in currencies:
             if i in rdr.header():
                 rdr = rdr.convert(i, remove_non_numeric)
-                rdr = rdr.convert(i, D)
+                # Quantize to ensure consistent decimal precision
+                rdr = rdr.convert(i, lambda x: D(x).quantize(quantizer, rounding=ROUND_HALF_UP))
 
         # fixup dates
         def convert_date(d):

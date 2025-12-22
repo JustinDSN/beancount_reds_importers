@@ -1,3 +1,4 @@
+
 2021-12-15 * "ELECTRONIC DEPOSIT - 3392 ACME INC DDEPOSIT   121521"
   Assets:Banks:DCU:Checking  10000.00 USD
 
@@ -8,7 +9,7 @@
   Assets:Banks:DCU:Checking  -400.15 USD
 
 2021-12-25 * "TRANSFER TO MBR ***0123 ACCT 4 12/22/2021 15:32 170124. - SWEEP ACCOUNT"
-  Assets:Banks:DCU:Checking -2500.99 USD
+  Assets:Banks:DCU:Checking  -2500.99 USD
 
 2021-12-26 * "ELECTRONIC DEPOSIT - RANDOMCORP         RECEIVABLE"
   Assets:Banks:DCU:Checking  141.67 USD
@@ -28,4 +29,4 @@
 2021-12-31 * "TRANSFER TO MBR ***0123 ACCT 4 MOBILE BANKING TRANSFER:123456789012345678 - SWEEP ACCOUNT"
   Assets:Banks:DCU:Checking  -7971.39 USD
 
-2022-01-01 balance Assets:Banks:DCU:Checking  500.00 USD
+2022-01-01 balance Assets:Banks:DCU:Checking                       500.00 USD

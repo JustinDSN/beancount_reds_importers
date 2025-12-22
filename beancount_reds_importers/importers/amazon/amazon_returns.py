@@ -36,6 +36,8 @@ class Importer(csvreader.Importer, banking.Importer):
 
     def prepare_processed_table(self, rdr):
         rdr = rdr.addfield("memo", "Amazon Return")
+        # Note: Quantization now handled centrally in csvreader.convert_columns()
+        # Keeping this line for backward compatibility and extra safety
         rdr = rdr.convert("amount", lambda i: i.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
         return rdr
 
